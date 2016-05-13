@@ -16,6 +16,12 @@ h1 {
   color: white;
 }
 
+h2 {
+  font-size: 3em;
+  padding-top: 25px;
+  color: grey;
+}
+
 ul {
   list-style: none;
 }
@@ -44,6 +50,7 @@ li {
   width: 360px;
   height: 280px;
 	background-color: #fff;
+  padding-top: 20px;
 }
 
 #switch {

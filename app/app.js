@@ -52,15 +52,15 @@ function geo_success(position) {
         console.log(result["weather"][0]["main"])
     }
 
-
-    $weatherdetails.append('<li>'+ Math.floor((result["main"]["temp"]-273.15)) + '°C</li>')
-    $weatherdetails.append('<li>'+ result["name"] + '</li>')
-    $weatherdetails.append('<li>'+ result["wind"]["speed"] + 'km/h</li>')
+    $('.temp').children().remove();
+    $('.temp').append('<h1>'+ Math.floor((result["main"]["temp"]-273.15)) + '<span id="switch"> °C</span></h1>')
+    $('.temp').append('<h2>'+ result["name"] + '</h2>')
+    $('.temp').append('<h2>'+ result["wind"]["speed"] + 'km/h</h2>')
   }).fail(function () {
     console.log("error")
   })
 }
-/*
+
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
-}) */
+})

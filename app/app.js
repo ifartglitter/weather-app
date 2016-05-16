@@ -20,6 +20,7 @@ function geo_success(position) {
     APPID: "975eb43f784021cb7facc638a32336ce"
   }
   var jqxhr = $.getJSON(url, data, function(result) {
+    //icon
     switch(result["weather"][0]["main"]) {
       case "Clear":
         $weatherIcon.html("<div class='sun'><div class='rays'></div></div>")
@@ -50,6 +51,8 @@ function geo_success(position) {
       default:
         console.log(result["weather"][0]["main"])
     }
+
+
     $weatherdetails.append('<li>'+ Math.floor((result["main"]["temp"]-273.15)) + '°C</li>')
     $weatherdetails.append('<li>'+ result["name"] + '</li>')
     $weatherdetails.append('<li>'+ result["wind"]["speed"] + 'km/h</li>')

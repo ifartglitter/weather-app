@@ -8,40 +8,26 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="custom.css">
   </head>
   <body>
-    <div class="container text-center">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="icon">
-            <div class='sun'><div class='rays'></div></div>
-          </div>
+    <div class="cistern">
+      <div class="weather">
+        <div class="icon weather-details">
+          <div class='cloud'></div><div class='rain'></div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-3">
-          <div class="text-justify">
-            <ul>
-              <li>temperature: </li>
-              <li>city: </li>
-              <li>windspeed: </li>
-            </ul>
-          </div>
+        <div class="main-info">
+        <div class="temp">
+          <h1> 21 <span id="switch">°C</span></h1>
+          <h2> City </h2>
         </div>
-        <div class="col-sm-3">
-          <div class="text-right">
-            <ul class="weather-details">
-              <li>22</li>
-              <li>dusseldorf</li>
-              <li>5kmh</li>
-            </ul>
-          </div>
-
         </div>
-      </div>
     </div>
+
+
+
 
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

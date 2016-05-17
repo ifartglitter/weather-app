@@ -1,5 +1,5 @@
 var $weatherbutton = $('#getweather')
-var $weatherIcon = $('.icon')
+var $weatherIcon = $('.weather')
 var $weatherdetails = $('.weather-details')
 
 var geo_options = {
@@ -23,44 +23,45 @@ function geo_success(position) {
     //icon
     switch(result["weather"][0]["main"]) {
       case "Clear":
-        $weatherIcon.html("<div class='sun'><div class='rays'></div></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-sunny'></i>")
         break
       case "Clouds":
-        $weatherIcon.html("<div class='cloud'></div><div class='sun'>   <div class='rays'></div></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-cloudy'></i>")
         //add background
         break
       case "Drizzle":
-        $weatherIcon.html("<div class='cloud'></div><div class='rain'></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-showers'></i>")
         //add background
         break
       case "Rain":
-        $weatherIcon.html("<div class='cloud'></div><div class='rain'></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-rain'></i>")
         //add background
         break
       case "Thunderstorm":
-        $weatherIcon.html("<div class='cloud'></div><div class='lightning'><div class='bolt'></div><div class='bolt'></div></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-thunderstorm'></i>")
         break
       case "Snow":
-        $weatherIcon.html("<div class='cloud'></div><div class='snow'><div class='flake'></div><div class='flake'></div></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-snow'></i>")
         //add background
         break
       case "Atmosphere":
-        $weatherIcon.html("<div class='cloud'></div><div class='rain'></div>")
+        $weatherIcon.html("<i class='wi wi-fw wi-day-fog'></i>")
         //add background
         break
       default:
         console.log(result["weather"][0]["main"])
     }
 
-
-    $weatherdetails.append('<li>'+ Math.floor((result["main"]["temp"]-273.15)) + '°C</li>')
-    $weatherdetails.append('<li>'+ result["name"] + '</li>')
-    $weatherdetails.append('<li>'+ result["wind"]["speed"] + 'km/h</li>')
+    $weatherdetails.children().remove()
+    $weatherdetails.append('<h1>'+ Math.floor((result["main"]["temp"]-273.15)) + '<span id="switch">°C</span></h1>')
+    $weatherdetails.append('<h2>'+ result["name"] + '</h2>')
+    $weatherdetails.append('<h2>'+ result["wind"]["speed"] + 'km/h</h2>')
+    $weatherdetails.append('<h2>'+ result["weather"][0]["description"] + '</h2>')
   }).fail(function () {
     console.log("error")
   })
 }
-/*
+
 $(document).ready(function() {
   navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
-}) */
+})

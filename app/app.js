@@ -51,7 +51,6 @@ function geo_success(position) {
       default:
         console.log(result["weather"][0]["main"])
     }
-
     $weatherdetails.children().remove()
     $weatherdetails.append('<h1>'+ Math.floor((result["main"]["temp"]-273.15)) + '<span id="switch"> °C</span></h1>')
     $weatherdetails.append('<h2>'+ result["name"] + '</h2>')

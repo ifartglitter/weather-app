@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -57,12 +59,16 @@ li {
   padding:25px;
 }
 
-#switch {
-  color: #FF3D2E;
-}
-
 .cistern:hover {
   z-index: 2;
+}
+
+.sunny {
+  background-color: #DAEAEF;
+}
+
+.rainy {
+  background-color: #dadfef;
 }
 
 /* animated weather icons */

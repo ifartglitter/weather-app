@@ -70,8 +70,12 @@ function geo_success(position) {
   })
 }
 
-$(document).ready(function() {
-  navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
+$('#getWeather').click(function() {
+  if("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
+  } else {
+    $('.cistern').innerHTML('<h2>your browser doesnt support geolocation');
+  }
 })
 
 $('#switch').on('click', function() {

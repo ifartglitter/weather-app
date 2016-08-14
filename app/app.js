@@ -1,4 +1,4 @@
-var $weatherbutton = $('#getweather')
+
 var $weatherIcon = $('.weather')
 
 var geo_options = {
@@ -11,19 +11,39 @@ var temp_c = 0
 var temp_f = 0
 var isCelsius = true
 
-function geo_error() {
-  alert("Sorry, no position available.")
+$('#getWeather').click(function(e) {
+  e.preventDefault()
+  if('geolocation' in navigator) {
+    navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
+  } else {
+    $('.cistern').innerHTML('<h2>your browser doesnt support geolocation')
+  }
+})
+
+$('#switch').on('click', function() {
+  if (isCelsius) {
+    $('#temperature').html(temp_f + ' °F')
+    isCelsius = false
+  }
+  else {
+    $('#temperature').html(temp_c + ' °C')
+    isCelsius = true
+  }
+})
+
+function geo_error () {
+  alert('Sorry, no position available.')
 }
 
-function geo_success(position) {
-  var url = "http://api.openweathermap.org/data/2.5/weather"
+function geo_success (position) {
+  var url = 'https://api.openweathermap.org/data/2.5/weather'
   var data = {
     lat: position.coords.latitude,
     lon: position.coords.longitude,
-    APPID: "975eb43f784021cb7facc638a32336ce"
+    APPID: '975eb43f784021cb7facc638a32336ce'
   }
-  var jqxhr = $.getJSON(url, data, function(result) {
-    //icon
+  $.getJSON(url, data, function (result) {
+    // icon
     switch(result["weather"][0]["main"]) {
       case "Clear":
         $weatherIcon.html("<i class='wi wi-fw wi-day-sunny'></i>")
@@ -65,26 +85,7 @@ function geo_success(position) {
     $('#windspeed').html(result["wind"]["speed"] + ' km/h')
     $('#description').html(result["weather"][0]["description"])
 
-  }).fail(function () {
-    console.log("error")
+  }).fail(function (e) {
+    alert(e.message)
   })
 }
-
-$('#getWeather').click(function() {
-  if("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options)
-  } else {
-    $('.cistern').innerHTML('<h2>your browser doesnt support geolocation');
-  }
-})
-
-$('#switch').on('click', function() {
-  if (isCelsius) {
-    $('#temperature').html(temp_f + ' °F')
-    isCelsius = false
-  }
-  else {
-    $('#temperature').html(temp_c + ' °C')
-    isCelsius = true
-  }
-})

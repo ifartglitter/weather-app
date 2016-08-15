@@ -32,12 +32,30 @@ li {
   font-size: 1.6em;
 }
 
+button {
+  display: inline-block;
+  padding: 5px 15px;
+  background: none;
+  font-size: 1rem;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border: 1px solid gray;
+  color: gray;
+}
+
+button:hover {
+  background-color: gray;
+  color: #272F32;
+  border: 1px solid gray;
+}
+
 
 .cistern {
   width: 360px;
   height: 760px;
   margin: 0 auto;
-  box-shadow: 4px 4px 5px black;
+  box-shadow: 3px 3px 15px 0px #111;
 }
 
 .main-info {
